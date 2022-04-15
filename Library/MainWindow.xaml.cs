@@ -25,7 +25,8 @@ namespace Library
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = new AuthorViewModel();
+            LibraryContext library = new LibraryContext();
+            lista_Autorzy.ItemsSource = library.Authors.ToList();
 
         }
 
