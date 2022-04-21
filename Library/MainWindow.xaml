@@ -5,16 +5,64 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Library"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <ListView Name="lista_Autorzy" HorizontalAlignment="Left" Height="262" VerticalAlignment="Top" Width="332">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Width="30" Header="Id" DisplayMemberBinding="{Binding Path=ID}" />
-                    <GridViewColumn Width="80" Header="Imie" DisplayMemberBinding="{Binding Path=FirstName}" />
-                    <GridViewColumn Width="80" Header="Nazwisko" DisplayMemberBinding="{Binding Path=LastName}" />
-                </GridView>
-            </ListView.View>
-        </ListView>
+        Title="MainWindow" Height="504.047" Width="800">
+    <Grid Margin="0,0,0,128">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="175*"/>
+            <ColumnDefinition Width="221*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+
+        </Grid.RowDefinitions>
+        <TabControl HorizontalAlignment="Left" Margin="0,0,0,-128" VerticalAlignment="Top" Grid.ColumnSpan="2" IsSynchronizedWithCurrentItem="True">
+            <TabItem Header="Authors">
+                <ListView Name="AuthorList" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Width="30" Header="Id" DisplayMemberBinding="{Binding Path=ID}" />
+                            <GridViewColumn Width="80" Header="FirstName" DisplayMemberBinding="{Binding Path=FirstName}" />
+                            <GridViewColumn Width="80" Header="LastName" DisplayMemberBinding="{Binding Path=LastName}" />
+                            <GridViewColumn Width="140" Header="BirthDay" DisplayMemberBinding="{Binding Path=BirthDay}" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </TabItem>
+            <TabItem Header="Books">
+                <ListView Name="BookList" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+                    <ListView.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </ListView.RenderTransform>
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Width="30" Header="Id" DisplayMemberBinding="{Binding Path=ID}" />
+                            <GridViewColumn Width="80" Header="AuthorID" DisplayMemberBinding="{Binding Path=AuthorID}" />
+                            <GridViewColumn Width="80" Header="ReaderID" DisplayMemberBinding="{Binding Path=ReaderID}" />
+                            <GridViewColumn Width="140" Header="Title" DisplayMemberBinding="{Binding Path=Title}" />
+                            <GridViewColumn Width="140" Header="RealiseDate" DisplayMemberBinding="{Binding Path=RealiseDate}" />
+
+
+
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </TabItem>
+            <TabItem Header="Readers">
+                <ListView Name="ReadersList" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Width="30" Header="Id" DisplayMemberBinding="{Binding Path=ID}" />
+                            <GridViewColumn Width="80" Header="FirstName" DisplayMemberBinding="{Binding Path=FirstName}" />
+                            <GridViewColumn Width="80" Header="LastName" DisplayMemberBinding="{Binding Path=LastName}" />
+                            <GridViewColumn Width="140" Header="BirthDay" DisplayMemberBinding="{Binding Path=BirthDay}" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

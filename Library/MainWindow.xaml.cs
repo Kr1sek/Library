@@ -26,8 +26,9 @@ namespace Library
         {
             InitializeComponent();
             LibraryContext library = new LibraryContext();
-            lista_Autorzy.ItemsSource = library.Authors.ToList();
-
+            AuthorList.ItemsSource = library.Authors.ToList();
+            BookList.ItemsSource = library.Books.ToList();
+            ReadersList.ItemsSource = library.Readers.ToList();
         }
 
         

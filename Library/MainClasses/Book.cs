@@ -12,7 +12,7 @@ namespace Library.MainClasses
         public int AuthorID { get; set; }
         public int? ReaderID { get; set; }
         public string Title { get; set; }
-        public DateTime ReleaseDate { get; set; }
+        public DateTime RealiseDate { get; set; }
         public virtual Author Author { get; set; }
         public virtual Reader Reader { get; set; }
     }

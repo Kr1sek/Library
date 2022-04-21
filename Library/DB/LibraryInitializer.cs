@@ -35,16 +35,16 @@ namespace Library.DB
 
             var book = new List<Book>
             {
-                new Book{Title="Title1", AuthorID=1,ReaderID=1, ReleaseDate=DateTime.Parse("1950-02-01")},
-                new Book{Title="Title2", AuthorID=1,ReaderID=1, ReleaseDate=DateTime.Parse("1951-04-01")},
-                new Book{Title="Title3", AuthorID=2,ReleaseDate=DateTime.Parse("1952-02-01")},
-                new Book{Title="Title4", AuthorID=2,ReaderID=2, ReleaseDate=DateTime.Parse("1953-08-01")},
-                new Book{Title="Title5", AuthorID=3,ReleaseDate=DateTime.Parse("1954-06-01")},
-                new Book{Title="Title6", AuthorID=3,ReaderID=5, ReleaseDate=DateTime.Parse("1955-01-01")},
-                new Book{Title="Title7", AuthorID=4,ReleaseDate=DateTime.Parse("1956-12-01")},
-                new Book{Title="Title8", AuthorID=4,ReleaseDate=DateTime.Parse("1957-10-01")},
-                new Book{Title="Title9", AuthorID=5,ReaderID=4, ReleaseDate=DateTime.Parse("1958-08-01")},
-                new Book{Title="Title10", AuthorID=5,ReleaseDate=DateTime.Parse("1990-01-01")},
+                new Book{Title="Title1", AuthorID=1,ReaderID=1, RealiseDate=DateTime.Parse("1950-02-01")},
+                new Book{Title="Title2", AuthorID=1,ReaderID=1, RealiseDate=DateTime.Parse("1951-04-01")},
+                new Book{Title="Title3", AuthorID=2,RealiseDate=DateTime.Parse("1952-02-01")},
+                new Book{Title="Title4", AuthorID=2,ReaderID=2, RealiseDate=DateTime.Parse("1953-08-01")},
+                new Book{Title="Title5", AuthorID=3,RealiseDate=DateTime.Parse("1954-06-01")},
+                new Book{Title="Title6", AuthorID=3,ReaderID=5, RealiseDate=DateTime.Parse("1955-01-01")},
+                new Book{Title="Title7", AuthorID=4,RealiseDate=DateTime.Parse("1956-12-01")},
+                new Book{Title="Title8", AuthorID=4,RealiseDate=DateTime.Parse("1957-10-01")},
+                new Book{Title="Title9", AuthorID=5,ReaderID=4, RealiseDate=DateTime.Parse("1958-08-01")},
+                new Book{Title="Title10", AuthorID=5,RealiseDate=DateTime.Parse("1990-01-01")},
             };
             book.ForEach(b => context.Books.Add(b));
             context.SaveChanges();
