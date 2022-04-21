@@ -10,6 +10,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="175*"/>
             <ColumnDefinition Width="221*"/>
+            
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
 
@@ -23,6 +24,16 @@
                             <GridViewColumn Width="80" Header="FirstName" DisplayMemberBinding="{Binding Path=FirstName}" />
                             <GridViewColumn Width="80" Header="LastName" DisplayMemberBinding="{Binding Path=LastName}" />
                             <GridViewColumn Width="140" Header="BirthDay" DisplayMemberBinding="{Binding Path=BirthDay}" />
+                            <GridViewColumn>
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button
+                                           Content="Delete"
+                                           Margin="0"
+                                           VerticalAlignment="Center" />            
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
                         </GridView>
                     </ListView.View>
                 </ListView>
@@ -44,9 +55,6 @@
                             <GridViewColumn Width="80" Header="ReaderID" DisplayMemberBinding="{Binding Path=ReaderID}" />
                             <GridViewColumn Width="140" Header="Title" DisplayMemberBinding="{Binding Path=Title}" />
                             <GridViewColumn Width="140" Header="RealiseDate" DisplayMemberBinding="{Binding Path=RealiseDate}" />
-
-
-
                         </GridView>
                     </ListView.View>
                 </ListView>

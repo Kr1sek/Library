@@ -14,6 +14,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Library.Model;
+using System.Data.SqlClient;
+using System.Data;
+using Library.MainClasses;
 
 namespace Library
 {
@@ -25,10 +28,13 @@ namespace Library
         public MainWindow()
         {
             InitializeComponent();
+            
             LibraryContext library = new LibraryContext();
+
             AuthorList.ItemsSource = library.Authors.ToList();
             BookList.ItemsSource = library.Books.ToList();
             ReadersList.ItemsSource = library.Readers.ToList();
+
         }
 
         
