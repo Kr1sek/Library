@@ -7,70 +7,60 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="504.047" Width="800">
     <Grid Margin="0,0,0,128">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="175*"/>
-            <ColumnDefinition Width="221*"/>
-            
-        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TabControl HorizontalAlignment="Left" Margin="0,0,0,-128" VerticalAlignment="Top" Grid.ColumnSpan="2" IsSynchronizedWithCurrentItem="True">
-            <TabItem Header="Authors">
-                <ListView Name="AuthorList" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top">
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn Width="30" Header="Id" DisplayMemberBinding="{Binding Path=ID}" />
-                            <GridViewColumn Width="80" Header="FirstName" DisplayMemberBinding="{Binding Path=FirstName}" />
-                            <GridViewColumn Width="80" Header="LastName" DisplayMemberBinding="{Binding Path=LastName}" />
-                            <GridViewColumn Width="140" Header="BirthDay" DisplayMemberBinding="{Binding Path=BirthDay}" />
-                            <GridViewColumn>
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <Button
-                                           Content="Delete"
-                                           Margin="0"
-                                           VerticalAlignment="Center" />            
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
-                        </GridView>
-                    </ListView.View>
-                </ListView>
-            </TabItem>
-            <TabItem Header="Books">
-                <ListView Name="BookList" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
-                    <ListView.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform/>
-                            <RotateTransform/>
-                            <TranslateTransform/>
-                        </TransformGroup>
-                    </ListView.RenderTransform>
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn Width="30" Header="Id" DisplayMemberBinding="{Binding Path=ID}" />
-                            <GridViewColumn Width="80" Header="AuthorID" DisplayMemberBinding="{Binding Path=AuthorID}" />
-                            <GridViewColumn Width="80" Header="ReaderID" DisplayMemberBinding="{Binding Path=ReaderID}" />
-                            <GridViewColumn Width="140" Header="Title" DisplayMemberBinding="{Binding Path=Title}" />
-                            <GridViewColumn Width="140" Header="RealiseDate" DisplayMemberBinding="{Binding Path=RealiseDate}" />
-                        </GridView>
-                    </ListView.View>
-                </ListView>
-            </TabItem>
-            <TabItem Header="Readers">
-                <ListView Name="ReadersList" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top">
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn Width="30" Header="Id" DisplayMemberBinding="{Binding Path=ID}" />
-                            <GridViewColumn Width="80" Header="FirstName" DisplayMemberBinding="{Binding Path=FirstName}" />
-                            <GridViewColumn Width="80" Header="LastName" DisplayMemberBinding="{Binding Path=LastName}" />
-                            <GridViewColumn Width="140" Header="BirthDay" DisplayMemberBinding="{Binding Path=BirthDay}" />
-                        </GridView>
-                    </ListView.View>
-                </ListView>
-            </TabItem>
-        </TabControl>
-    </Grid>
+        <DataGrid Name="Some" AutoGenerateColumns="False" CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding FirstName}"/>
+                <DataGridTextColumn Header="LastName" Binding="{Binding LastName}"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="ShowDetails">Show Details</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="Delete">Delete</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn> 
+            </DataGrid.Columns>
+            <DataGrid.RowDetailsTemplate>
+                <DataTemplate>
+                    <DockPanel Background="GhostWhite">
+                        <Grid Margin="0,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition>
+                                    
+                                </ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Text="ID: " FontWeight="Bold" />
+                            <TextBlock Text="{Binding ID}" Grid.Column="1" />
+                            <TextBlock Text="Name: " FontWeight="Bold" Grid.Row="1" />
+                            <TextBlock Text="{Binding FirstName}" Grid.Column="1" Grid.Row="1" />
+                            <TextBlock Text="Birthday: " FontWeight="Bold" Grid.Row="2" />
+                            <TextBlock Text="{Binding BirthDay, StringFormat=d}" Grid.Column="1" Grid.Row="2" />
+
+                        </Grid>
+                    </DockPanel>
+                </DataTemplate>
+            </DataGrid.RowDetailsTemplate>
+        </DataGrid>
+    </Grid> 
 </Window>

@@ -13,7 +13,7 @@ namespace Library.DB
         {
             var author = new List<Author>
             {
-                new Author{FirstName="Adi1", LastName="xd1", BirthDay=DateTime.Parse("2000-06-01")},
+                new Author{FirstName="Adi1", LastName="xd1", BirthDay=DateTime.Parse("2000-06-01"),},
                 new Author{FirstName="Adi2", LastName="xd2", BirthDay=DateTime.Parse("2010-07-01")},
                 new Author{FirstName="Adi3", LastName="xd3", BirthDay=DateTime.Parse("2020-01-01")},
                 new Author{FirstName="Adi4", LastName="xd4", BirthDay=DateTime.Parse("2015-10-01")},
@@ -24,7 +24,7 @@ namespace Library.DB
 
             var reader = new List<Reader>
             {
-                new Reader{FirstName="oli1", LastName="olp1", BirthDay=DateTime.Parse("2020-02-01"), },
+                new Reader{FirstName="oli1", LastName="olp1", BirthDay=DateTime.Parse("2020-02-01")},
                 new Reader{FirstName="oli2", LastName="olp2", BirthDay=DateTime.Parse("2010-04-01")},
                 new Reader{FirstName="oli3", LastName="olp3", BirthDay=DateTime.Parse("2022-06-01")},
                 new Reader{FirstName="oli4", LastName="olp4", BirthDay=DateTime.Parse("2012-08-01")},

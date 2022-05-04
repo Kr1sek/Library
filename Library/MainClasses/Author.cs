@@ -12,6 +12,7 @@ namespace Library.MainClasses
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime BirthDay { get; set; }
+        public List<Book> Bookss { get; set; }
         public virtual ICollection<Book> Books { get; set; }
     }
 }

@@ -1,4 +1,6 @@
-﻿using Library.DB;
+﻿using Caliburn.Micro;
+using Library.DB;
+using Library.MainClasses;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,15 +10,17 @@ using System.Threading.Tasks;
 
 namespace Library.Model
 {
-    class AuthorViewModel
+    public class AuthorViewModel
     {
-        LibraryContext db = new LibraryContext();
+        public BindableCollection<Author> Some { get; set; }
 
         public AuthorViewModel()
         {
-            Author = db.Authors.ToList();
+            LibraryContext db = new LibraryContext();
+            Some = new BindableCollection<Author>(db.Authors.ToList());
+            
         }
 
-        public IList Author { get; set; }
+      
     }
 }
