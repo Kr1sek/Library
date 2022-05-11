@@ -45,7 +45,7 @@ namespace Library.DB
                 new Book{Title="Title8", AuthorID=4,RealiseDate=DateTime.Parse("1957-10-01")},
                 new Book{Title="Title9", AuthorID=5,ReaderID=4, RealiseDate=DateTime.Parse("1958-08-01")},
                 new Book{Title="Title10", AuthorID=5,RealiseDate=DateTime.Parse("1990-01-01")},
-            };
+            };  
             book.ForEach(b => context.Books.Add(b));
             context.SaveChanges();
 

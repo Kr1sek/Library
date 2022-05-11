@@ -25,6 +25,7 @@ namespace Library
     /// </summary>
     public partial class MainWindow : Window
     {
+       
         public MainWindow()
         {
             InitializeComponent();
@@ -32,17 +33,17 @@ namespace Library
             Some.ItemsSource = db.Authors.ToList();
         }
 
-        void ShowDetails(object sender, RoutedEventArgs e)
-        {
-            for (var vis = sender as Visual; vis != null; vis = VisualTreeHelper.GetParent(vis) as Visual)
-                if (vis is DataGridRow)
-                {
-                    var row = (DataGridRow)vis;
-                    row.DetailsVisibility =
-                    row.DetailsVisibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
-                    break;
-                }
-        }
+        //void ShowDetails(object sender, RoutedEventArgs e)
+        //{
+        //    for (var vis = sender as Visual; vis != null; vis = VisualTreeHelper.GetParent(vis) as Visual)
+        //        if (vis is DataGridRow)
+        //        {
+        //            var row = (DataGridRow)vis;
+        //            row.DetailsVisibility =
+        //            row.DetailsVisibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
+        //            break;
+        //        }
+        //}
 
         void Delete(object sender, RoutedEventArgs e)
         {
@@ -51,22 +52,35 @@ namespace Library
             if (Some.SelectedItems.Count > 0)
             {
                 Author author = new Author();
-                
-                    author = Some.SelectedItem as Author;
-                    id = Convert.ToInt32(author.ID);
-                    SqlConnection connection = new SqlConnection("data source=(localdb)\\MSSQLLocalDB;initial catalog=Library;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework");
-                    connection.Open();
-                    string query = $"delete from Author where id ={id}";
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.ExecuteNonQuery();
-                    connection.Close();
-                    Some.ItemsSource = dba.Authors.ToList();
-                    Some.Items.Refresh();
-                    MessageBox.Show("Deleted");
-                }
+                author = Some.SelectedItem as Author;
+                id = Convert.ToInt32(author.ID);
+                SqlConnection connection = new SqlConnection("data source=(localdb)\\MSSQLLocalDB;initial catalog=Library;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework");
+                connection.Open();
+                string query = $"delete from Author where id ={id}";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.ExecuteNonQuery();
+                connection.Close();
+                Some.ItemsSource = dba.Authors.ToList();
+                Some.Items.Refresh();
+                MessageBox.Show("Deleted");
             }
-            
-            
+        }
+
+        private void OpenWindow(object sender, RoutedEventArgs e)
+        {
+            LibraryContext dba = new LibraryContext();
+            Author author = new Author();
+            author = Some.SelectedItem as Author;
+            EditWindow win2 = new EditWindow(author);
+            win2.Show();
+        }
+
+        private void Refresh(object sender, RoutedEventArgs e)
+        {
+            LibraryContext dba = new LibraryContext();
+            Some.ItemsSource = dba.Authors.ToList();
+            Some.Items.Refresh();
         }
     }
+}
 

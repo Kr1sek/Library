@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Library"
         mc:Ignorable="d"
         Title="MainWindow" Height="504.047" Width="800">
-    <Grid Margin="0,0,0,128">
+    <Grid Margin="0,0,0,-1">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -14,24 +14,25 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <DataGrid Name="Some" AutoGenerateColumns="False" CanUserAddRows="False">
+        <DataGrid Name="Some" AutoGenerateColumns="False" CanUserAddRows="False" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding FirstName}"/>
                 <DataGridTextColumn Header="LastName" Binding="{Binding LastName}"/>
-                <DataGridTemplateColumn>
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button Click="ShowDetails">Show Details</Button>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+                
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button Click="Delete">Delete</Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn> 
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="OpenWindow">Edit</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
             <DataGrid.RowDetailsTemplate>
                 <DataTemplate>
@@ -41,7 +42,7 @@
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition>
-                                    
+
                                 </ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
@@ -62,5 +63,6 @@
                 </DataTemplate>
             </DataGrid.RowDetailsTemplate>
         </DataGrid>
-    </Grid> 
+        <Button Click="Refresh" Content="Refresh" HorizontalAlignment="Left" Margin="736,3,0,0" VerticalAlignment="Top" Width="46"/>
+    </Grid>
 </Window>
