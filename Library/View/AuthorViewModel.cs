@@ -12,14 +12,7 @@ namespace Library.Model
 {
     public class AuthorViewModel
     {
-        public BindableCollection<Author> Some { get; set; }
-
-        public AuthorViewModel()
-        {
-            LibraryContext db = new LibraryContext();
-            Some = new BindableCollection<Author>(db.Authors.ToList());
-            
-        }
+        
 
       
     }

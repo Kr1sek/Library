@@ -76,7 +76,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="EditWindow.xaml">
+    <Compile Include="AuthorWindows\AddAuthorWindow.xaml.cs">
+      <DependentUpon>AddAuthorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AuthorWindows\EditAuthorWindow.xaml.cs">
+      <DependentUpon>EditAuthorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IGetObject.cs" />
+    <Page Include="AuthorWindows\AddAuthorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AuthorWindows\EditAuthorWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -90,9 +101,6 @@
     </Compile>
     <Compile Include="DB\LibraryContext.cs" />
     <Compile Include="DB\LibraryInitializer.cs" />
-    <Compile Include="EditWindow.xaml.cs">
-      <DependentUpon>EditWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="MainClasses\Author.cs" />
     <Compile Include="MainClasses\Book.cs" />
     <Compile Include="MainClasses\Reader.cs" />

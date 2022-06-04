@@ -17,6 +17,8 @@ using Library.Model;
 using System.Data.SqlClient;
 using System.Data;
 using Library.MainClasses;
+using Library.View;
+using Library.AuthorWindows;
 
 namespace Library
 {
@@ -66,13 +68,13 @@ namespace Library
             }
         }
 
-        private void OpenWindow(object sender, RoutedEventArgs e)
+        private void OpenEditAuthorWindow(object sender, RoutedEventArgs e)
         {
-            LibraryContext dba = new LibraryContext();
+            
             Author author = new Author();
             author = Some.SelectedItem as Author;
-            EditWindow win2 = new EditWindow(author);
-            win2.Show();
+            EditAuthorWindow win = new EditAuthorWindow(author);
+            win.Show();
         }
 
         private void Refresh(object sender, RoutedEventArgs e)
@@ -80,6 +82,12 @@ namespace Library
             LibraryContext dba = new LibraryContext();
             Some.ItemsSource = dba.Authors.ToList();
             Some.Items.Refresh();
+        }
+
+        private void OpenAddAuthorWindow(object sender, RoutedEventArgs e)
+        {
+            AddAuthorWindow win = new AddAuthorWindow();
+            win.Show();
         }
     }
 }

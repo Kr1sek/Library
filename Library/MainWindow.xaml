@@ -18,7 +18,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding FirstName}"/>
                 <DataGridTextColumn Header="LastName" Binding="{Binding LastName}"/>
-                
+
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -29,7 +29,7 @@
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Click="OpenWindow">Edit</Button>
+                            <Button Click="OpenEditAuthorWindow">Edit</Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -63,6 +63,8 @@
                 </DataTemplate>
             </DataGrid.RowDetailsTemplate>
         </DataGrid>
+        <Button Click="OpenAddAuthorWindow" Content="Add" HorizontalAlignment="Left" Margin="685,3,0,3" VerticalAlignment="Top" Width="46"/>
         <Button Click="Refresh" Content="Refresh" HorizontalAlignment="Left" Margin="736,3,0,0" VerticalAlignment="Top" Width="46"/>
+
     </Grid>
 </Window>
