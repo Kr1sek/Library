@@ -34,23 +34,23 @@ namespace Library.AuthorWindows
             int id = all.Count();
             using (SqlConnection connection = new SqlConnection("data source=(localdb)\\MSSQLLocalDB;initial catalog=Library;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"))
             {
-                //try
-                //{
+                try
+                {
                     Author author = new Author();    
                     connection.Open();
                     string query = $"SET IDENTITY_INSERT dbo.Author ON; insert into Author (ID, FirstName, LastName, BirthDay) values ('{id+1}', '{FirstName.Text.ToString()}', '{LastName.Text.ToString()}', '{BirthDay.Text}')";
                     SqlCommand command = new SqlCommand(query, connection);
                     command.ExecuteNonQuery();
                     Close();
-                //}
-                //catch (Exception ex)
-                //{
-                //    excep.Text = "Błąd formatu daty. Należy wprowadzić w formacie MM.DD.YYYY";
-                //}
-                //finally
-                //{
-                //    connection.Close();
-                //}
+                }
+                catch (Exception)
+                {
+                    excep.Text = "Błąd formatu daty. Należy wprowadzić w formacie MM.DD.YYYY";
+                }
+                finally
+                {
+                connection.Close();
+                }
             };
         }
     }

@@ -76,18 +76,31 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AuthorWindows\AddAuthorWindow.xaml.cs">
+    <Compile Include="Windows\AuthorWindows\AddAuthorWindow.xaml.cs">
       <DependentUpon>AddAuthorWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AuthorWindows\EditAuthorWindow.xaml.cs">
+    <Compile Include="Windows\AuthorWindows\EditAuthorWindow.xaml.cs">
       <DependentUpon>EditAuthorWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\IGetObject.cs" />
-    <Page Include="AuthorWindows\AddAuthorWindow.xaml">
+    <Compile Include="Windows\ReaderWindows\AddReaderWindow.xaml.cs">
+      <DependentUpon>AddReaderWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\ReaderWindows\EditReaderWindow.xaml.cs">
+      <DependentUpon>EditReaderWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Windows\AuthorWindows\AddAuthorWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AuthorWindows\EditAuthorWindow.xaml">
+    <Page Include="Windows\AuthorWindows\EditAuthorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\BookWindows\AddBookWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\BookWindows\EditBookWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -99,6 +112,12 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Windows\BookWindows\AddBookWindow.xaml.cs">
+      <DependentUpon>AddBookWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\BookWindows\EditBookWindow.xaml.cs">
+      <DependentUpon>EditBookWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DB\LibraryContext.cs" />
     <Compile Include="DB\LibraryInitializer.cs" />
     <Compile Include="MainClasses\Author.cs" />
@@ -108,6 +127,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Windows\ReaderWindows\AddReaderWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\ReaderWindows\EditReaderWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="View\AuthorViewModel.cs" />

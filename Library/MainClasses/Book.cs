@@ -1,4 +1,4 @@
-﻿using Library.View;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Library.MainClasses
 {
-    public class Book : IGetObject
+    public class Book
     {
         public int ID { get; set; }
         public int AuthorID { get; set; }

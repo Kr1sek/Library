@@ -17,8 +17,10 @@ using Library.Model;
 using System.Data.SqlClient;
 using System.Data;
 using Library.MainClasses;
-using Library.View;
 using Library.AuthorWindows;
+using Library.BookWindows;
+using Library.Windows.BookWindows;
+using Library.Windows.ReaderWindows;
 
 namespace Library
 {
@@ -33,21 +35,11 @@ namespace Library
             InitializeComponent();
             LibraryContext db = new LibraryContext();
             Some.ItemsSource = db.Authors.ToList();
+            Books.ItemsSource = db.Books.ToList();
+            Readers.ItemsSource = db.Readers.ToList();
         }
-
-        //void ShowDetails(object sender, RoutedEventArgs e)
-        //{
-        //    for (var vis = sender as Visual; vis != null; vis = VisualTreeHelper.GetParent(vis) as Visual)
-        //        if (vis is DataGridRow)
-        //        {
-        //            var row = (DataGridRow)vis;
-        //            row.DetailsVisibility =
-        //            row.DetailsVisibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
-        //            break;
-        //        }
-        //}
-
-        void Delete(object sender, RoutedEventArgs e)
+        //sekcja klasy Author
+        void DeleteAuthor(object sender, RoutedEventArgs e)
         {
             LibraryContext dba = new LibraryContext();
             int id;
@@ -77,7 +69,7 @@ namespace Library
             win.Show();
         }
 
-        private void Refresh(object sender, RoutedEventArgs e)
+        private void RefreshAuthors(object sender, RoutedEventArgs e)
         {
             LibraryContext dba = new LibraryContext();
             Some.ItemsSource = dba.Authors.ToList();
@@ -87,6 +79,94 @@ namespace Library
         private void OpenAddAuthorWindow(object sender, RoutedEventArgs e)
         {
             AddAuthorWindow win = new AddAuthorWindow();
+            win.Show();
+        }
+
+        //sekcja klasy Book
+        void DeleteBook(object sender, RoutedEventArgs e)
+        {
+            LibraryContext dba = new LibraryContext();
+            int id;
+            if (Books.SelectedItems.Count > 0)
+            {
+                Book book = new Book();
+                book = Books.SelectedItem as Book;
+                id = Convert.ToInt32(book.ID);
+                SqlConnection connection = new SqlConnection("data source=(localdb)\\MSSQLLocalDB;initial catalog=Library;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework");
+                connection.Open();
+                string query = $"delete from Book where id ={id}";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.ExecuteNonQuery();
+                connection.Close();
+                Books.ItemsSource = dba.Books.ToList();
+                Books.Items.Refresh();
+                MessageBox.Show("Deleted");
+            }
+        }
+
+        private void OpenEditBookWindow(object sender, RoutedEventArgs e)
+        {
+
+            Book booked = new Book();
+            booked = Books.SelectedItem as Book;
+            EditBookWindow win = new EditBookWindow(booked);
+            win.Show();
+        }
+
+        private void RefreshBook(object sender, RoutedEventArgs e)
+        {
+            LibraryContext dba = new LibraryContext();
+            Books.ItemsSource = dba.Books.ToList();
+            Books.Items.Refresh();
+        }
+
+        private void OpenAddBookWindow(object sender, RoutedEventArgs e)
+        {
+            AddBookWindow win = new AddBookWindow();
+            win.Show();
+        }
+
+        //Sekcja Reader
+        void DeleteReader(object sender, RoutedEventArgs e)
+        {
+            LibraryContext dba = new LibraryContext();
+            int id;
+            if (Readers.SelectedItems.Count > 0)
+            {
+                Reader reader = new Reader();
+                reader = Readers.SelectedItem as Reader;
+                id = Convert.ToInt32(reader.ID);
+                SqlConnection connection = new SqlConnection("data source=(localdb)\\MSSQLLocalDB;initial catalog=Library;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework");
+                connection.Open();
+                string query = $"delete from Reader where id ={id}";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.ExecuteNonQuery();
+                connection.Close();
+                Readers.ItemsSource = dba.Readers.ToList();
+                Readers.Items.Refresh();
+                MessageBox.Show("Deleted");
+            }
+        }
+
+        private void OpenEditReaderWindow(object sender, RoutedEventArgs e)
+        {
+
+            Reader reader = new Reader();
+            reader = Readers.SelectedItem as Reader;
+            EditReaderWindow win = new EditReaderWindow(reader);
+            win.Show();
+        }
+
+        private void RefreshReaders(object sender, RoutedEventArgs e)
+        {
+            LibraryContext dba = new LibraryContext();
+            Readers.ItemsSource = dba.Readers.ToList();
+            Readers.Items.Refresh();
+        }
+
+        private void OpenAddReadersWindow(object sender, RoutedEventArgs e)
+        {
+            AddReaderWindow win = new AddReaderWindow();
             win.Show();
         }
     }
